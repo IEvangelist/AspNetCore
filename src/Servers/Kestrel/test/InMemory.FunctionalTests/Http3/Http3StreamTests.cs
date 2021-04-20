@@ -484,7 +484,7 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Tests
             var requestStream = await InitializeConnectionAndStreamsAsync(_noopApplication);
             var doneWithHeaders = await requestStream.SendHeadersAsync(headers, endStream: true);
 
-            await requestStream.WaitForStreamErrorAsync(Http3ErrorCode.ProtocolError,
+            await requestStream.WaitForStreamErrorAsync(Http3ErrorCode.RequestRejected,
                 CoreStrings.BadRequest_RequestLineTooLong);
         }
 
